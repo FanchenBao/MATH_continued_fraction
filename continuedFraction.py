@@ -5,6 +5,7 @@ class ContinuedFraction:
     ''' a class to handle continued fraction generated from the square root of any positive integer that is not a perfect square '''
     def __init__(self, n):
         self.n = n # n is the integer to be handled
+        self.a0 = int(sqrt(self.n))
         self.period = self.getPeriod()
         self.periodLen = len(self.period)
 
@@ -12,7 +13,7 @@ class ContinuedFraction:
         ''' find the period of continued fraction of sqrt(n), return the period as a list.
             code borrowed from Project Euler problem 64
         '''
-        b = int(sqrt(self.n))
+        b = self.a0
         c = 1
         coeffDict = {}
         period = []
@@ -41,6 +42,6 @@ class ContinuedFraction:
         num = 1 
         for i in range(R - 3, -1, -1): # from period[R - 3] to period[0]. Add the non-period first integer outside the loop
             num, den = den, self.period[i % pLen] * den + num
-        num, den = int(sqrt(self.n)) * den + num, den # the first sequence
+        num, den = self.a0 * den + num, den # the first sequence
 
         return num, den
