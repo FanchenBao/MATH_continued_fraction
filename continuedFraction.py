@@ -4,10 +4,13 @@ from math import sqrt
 class ContinuedFraction:
     ''' a class to handle continued fraction generated from the square root of any positive integer that is not a perfect square '''
     def __init__(self, n):
-        self.n = n # n is the integer to be handled
-        self.a0 = int(sqrt(self.n))
-        self.period = self.getPeriod()
-        self.periodLen = len(self.period)
+        self.a0 = int(sqrt(n))
+        if a0**2 != n: # given number n is not perfect square
+            self.n = n # n is the integer to be handled
+            self.period = self.getPeriod()
+            self.periodLen = len(self.period)
+        else:
+            print("Error! The target integer must NOT be a perfect square!")
 
     def getPeriod(self):
         ''' find the period of continued fraction of sqrt(n), return the period as a list.
