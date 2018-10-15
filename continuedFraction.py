@@ -5,7 +5,7 @@ class ContinuedFraction:
     ''' a class to handle continued fraction generated from the square root of any positive integer that is not a perfect square '''
     def __init__(self, n):
         self.a0 = int(sqrt(n))
-        if a0**2 != n: # given number n is not perfect square
+        if self.a0**2 != n: # given number n is not perfect square
             self.n = n # n is the integer to be handled
             self.period = self.getPeriod()
             self.periodLen = len(self.period)
@@ -39,7 +39,7 @@ class ContinuedFraction:
         '''
         pLen = len(self.period)
         if R == 1:
-            return int(sqrt(self.n)), 1
+            return self.a0, 1
 
         den = self.period[(R - 2) % pLen] # this is the last component (Nth) of the continued fraction
         num = 1 
