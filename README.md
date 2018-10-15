@@ -44,14 +44,14 @@ std::cout << "]\n";
 
 // The period is: 5 [1 1 3 5 3 1 1 10 ]
 ```
-* Use member function getConvergent() to retrieve the Rth convergent. Since the convergent can have very big numerator and denominator as R gets bigger, the convergent is represented using the mpq_class of GMP. 
+* Use member function getConvergent() to retrieve the Rth convergent (for what Rth convergent implies in this context, refer to the bold text in the Python section). Since the convergent can have very big numerator and denominator as R gets bigger, the convergent is represented using the mpq_class of GMP. 
 ```C++
 #include "continuedFraction.h"
 
 int n = 31;
-int R = 100;
+int R = 100; // a big R value
 ContinuedFraction CF(n);
-mpq_class res = CF.getConvergent(R);
+mpq_class res = CF.getConvergent(R); // the numerator and denominator will be huge
 std::cout << "The " << R << "th convergent is " << res.get_num() << "/" << res.get_den() << std::endl;
 
 // The 100th convergent is 24288696594210052168209797436920799302880999/4362378687639795310878136232646876050637127
